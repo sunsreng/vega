@@ -32,6 +32,9 @@ namespace Vega.Api
             });
 
             services.AddAutoMapper();
+
+            services.AddScoped<IVehicleRepository, VehicleRepository>();
+
             //services.AddDbContext<VegaDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:Default"]));
             services.AddDbContext<VegaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddMvc();
