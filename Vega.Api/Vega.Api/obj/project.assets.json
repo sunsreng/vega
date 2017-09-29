@@ -12612,11 +12612,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "D:\\10_Dev\\vega\\Vega.Api\\Vega.Api\\Vega.Api.csproj",
+      "projectUniqueName": "D:\\10_Dev\\vega\\Vega.API\\Vega.Api\\Vega.Api.csproj",
       "projectName": "Vega.Api",
-      "projectPath": "D:\\10_Dev\\vega\\Vega.Api\\Vega.Api\\Vega.Api.csproj",
+      "projectPath": "D:\\10_Dev\\vega\\Vega.API\\Vega.Api\\Vega.Api.csproj",
       "packagesPath": "C:\\Users\\sreng.INFINITY\\.nuget\\packages\\",
-      "outputPath": "D:\\10_Dev\\vega\\Vega.Api\\Vega.Api\\obj\\",
+      "outputPath": "D:\\10_Dev\\vega\\Vega.API\\Vega.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
