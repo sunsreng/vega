@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using System.Linq;
 using Vega.Api.Controllers.Resources;
-using Vega.Api.Models;
+using Vega.Api.Core.Models;
 
 namespace Vega.Api.Mapping
 {

@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Vega.Api.Models
+namespace Vega.Api.Core.Models
 {
     public class Make
     {

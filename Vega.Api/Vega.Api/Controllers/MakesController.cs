@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Vega.Api.Controllers.Resources;
-using Vega.Api.Models;
+using Vega.Api.Core.Models;
 using Vega.Api.Persistence;
 
 namespace Vega.Api.Controllers
