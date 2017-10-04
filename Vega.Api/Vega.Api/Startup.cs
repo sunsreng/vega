@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Vega.Api.Core;
 using Vega.Api.Persistence;
 
 namespace Vega.Api
@@ -20,22 +21,21 @@ namespace Vega.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options =>
-            {
-                options.AddPolicy("ManaAPI",
-                    build => {
-                        build.WithOrigins("http://localhost:4200")
-                        //.WithHeaders("GET")
-                        .AllowAnyHeader();
-                        }
-                    );
-            });
-
             services.AddAutoMapper();
 
             services.AddScoped<IVehicleRepository, VehicleRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("ManaAPI",
+                      builder =>
+                      {
+                          builder.WithOrigins("http://localhost:4200")
+                                 .AllowAnyHeader()
+                                 .AllowAnyMethod();
+                      });
+            });
             //services.AddDbContext<VegaDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:Default"]));
             services.AddDbContext<VegaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddMvc();

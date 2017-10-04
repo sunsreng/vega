@@ -12608,15 +12608,12 @@
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "D:\\10_Dev\\vega\\Vega.API\\Vega.Api\\Vega.Api.csproj",
+      "projectUniqueName": "D:\\10_Dev\\vega\\Vega.Api\\Vega.Api\\Vega.Api.csproj",
       "projectName": "Vega.Api",
-      "projectPath": "D:\\10_Dev\\vega\\Vega.API\\Vega.Api\\Vega.Api.csproj",
+      "projectPath": "D:\\10_Dev\\vega\\Vega.Api\\Vega.Api\\Vega.Api.csproj",
       "packagesPath": "C:\\Users\\sreng.INFINITY\\.nuget\\packages\\",
-      "outputPath": "D:\\10_Dev\\vega\\Vega.API\\Vega.Api\\obj\\",
+      "outputPath": "D:\\10_Dev\\vega\\Vega.Api\\Vega.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12646,14 +12643,6 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Tools": {
-            "target": "Package",
-            "version": "2.0.0"
-          },
-          "AutoMapper.Extensions.Microsoft.DependencyInjection": {
-            "target": "Package",
-            "version": "3.0.1"
-          },
           "Microsoft.NETCore.App": {
             "target": "Package",
             "version": "2.0.0-preview3-25518-01",
@@ -12663,7 +12652,15 @@
             "target": "Package",
             "version": "6.1.1"
           },
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+            "target": "Package",
+            "version": "3.0.1"
+          },
           "Microsoft.AspNetCore.All": {
+            "target": "Package",
+            "version": "2.0.0"
+          },
+          "Microsoft.EntityFrameworkCore.Tools": {
             "target": "Package",
             "version": "2.0.0"
           }

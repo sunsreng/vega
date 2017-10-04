@@ -22,7 +22,7 @@ namespace Vega.Api.Controllers
             this.unitOfWork = unitOfWork;
         }
 
-        [HttpPost]
+        [HttpPost("/api/vehicles")]
         public async Task<IActionResult> CreateVehicle([FromBody] SaveVehicleResource vehicleResource)
         {
             if (!ModelState.IsValid)
@@ -34,7 +34,9 @@ namespace Vega.Api.Controllers
             repository.Add(vehicle);
             await unitOfWork.CompleteAsync();
 
-            var result = mapper.Map<Vehicle, SaveVehicleResource>(vehicle);
+            vehicle = await repository.GetVehicleAsync(vehicle.Id);
+
+            var result = mapper.Map<Vehicle, VehicleResource>(vehicle);
 
             return Ok(result);
         }
