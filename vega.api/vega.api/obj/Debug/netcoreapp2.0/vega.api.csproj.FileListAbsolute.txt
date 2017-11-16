@@ -7,6 +7,6 @@ D:\10_Dev\Dev\vega\vega.api\vega.api\obj\Debug\netcoreapp2.0\vega.api.csproj.Cor
 D:\10_Dev\Dev\vega\vega.api\vega.api\obj\Debug\netcoreapp2.0\vega.api.AssemblyInfoInputs.cache
 D:\10_Dev\Dev\vega\vega.api\vega.api\obj\Debug\netcoreapp2.0\vega.api.AssemblyInfo.cs
 D:\10_Dev\Dev\vega\vega.api\vega.api\bin\Debug\netcoreapp2.0\vega.api.pdb
-D:\10_Dev\Dev\vega\vega.api\vega.api\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
 D:\10_Dev\Dev\vega\vega.api\vega.api\obj\Debug\netcoreapp2.0\vega.api.dll
 D:\10_Dev\Dev\vega\vega.api\vega.api\obj\Debug\netcoreapp2.0\vega.api.pdb
+D:\10_Dev\Dev\vega\vega.api\vega.api\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
