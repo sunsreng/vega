@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using vega.api.Controllers.Resources;
+using vega.api.Models;
 
 namespace vega.api.Mapping
 {
-    public class MappingProfile
+    public class MappingProfile: Profile
     {
+        public MappingProfile()
+        {
+            CreateMap<Make, MakeResource>();
+        }
     }
 }
