@@ -8,7 +8,7 @@ namespace vega.api.Mapping
     {
         public MappingProfile()
         {
-            CreateMap<Make, MakeResource>();
+            //CreateMap<Make, MakeResource>();
         }
     }
 }

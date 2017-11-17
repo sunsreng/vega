@@ -46,78 +46,81 @@
   <mat-sidenav-container fxFlex>
     <mat-sidenav #sidenav mode="side" opened="true">
       <mat-tab-group>
-  <mat-tab label="Users">
-      <mat-accordion class="example-headers-align">
-        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Personal data
-            </mat-panel-title>
+        <mat-tab label="Users">
+          <mat-accordion class="example-headers-align">
+            <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Personal data
+                </mat-panel-title>
 
-            <mat-panel-description>
-              <mat-icon>account_circle</mat-icon>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
+                <mat-panel-description>
+                  <mat-icon>account_circle</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
 
-          <mat-form-field>
-            <input matInput type="number" min="1" placeholder="Age">
-          </mat-form-field>
+              <mat-nav-list>
+                <mat-list-item *ngFor="let nav of navList" [routerLink]="[nav.urls]">
+                  <mat-icon matListIcon>{{nav.icon}}</mat-icon>
+                  <h4 matLine>{{nav.name}}</h4>
+                </mat-list-item>
+              </mat-nav-list>
 
-          <mat-action-row>
-            <button mat-button color="primary" (click)="nextStep()">Next</button>
-          </mat-action-row>
-        </mat-expansion-panel>
+              <mat-action-row>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+              </mat-action-row>
+            </mat-expansion-panel>
 
-        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Destination
-            </mat-panel-title>
-            <mat-panel-description>
-              <mat-icon>map</mat-icon>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
+            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Destination
+                </mat-panel-title>
+                <mat-panel-description>
+                  <mat-icon>map</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
 
-          <mat-form-field>
-            <input matInput placeholder="Country">
-          </mat-form-field>
+              <mat-nav-list>
+                <a mat-list-item href="..." *ngFor="let nav of navList"> {{ nav.name }} </a>
+              </mat-nav-list>
 
-          <mat-action-row>
-            <button mat-button color="warn" (click)="prevStep()">Previous</button>
-            <button mat-button color="primary" (click)="nextStep()">Next</button>
-          </mat-action-row>
-        </mat-expansion-panel>
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+              </mat-action-row>
+            </mat-expansion-panel>
 
-        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Day of the trip
-            </mat-panel-title>
-            <mat-panel-description>
-              <mat-icon>date_range</mat-icon>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <mat-nav-list>
-            <mat-list-item href="..." *ngFor="let nav of navList">
-              <mat-icon matListIcon>{{nav.icon}}</mat-icon>
-              <h4 matLine>{{nav.name}}</h4>
-            </mat-list-item>
-            <mat-divider></mat-divider>
-            <a mat-list-item href="..." *ngFor="let nav of navList"> {{ nav.name }} </a>
-          </mat-nav-list>
-          <mat-action-row>
-            <button mat-button color="warn" (click)="prevStep()">Previous</button>
-            <button mat-button color="primary" (click)="nextStep()">End</button>
-          </mat-action-row>
-        </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Day of the trip
+                </mat-panel-title>
+                <mat-panel-description>
+                  <mat-icon>date_range</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
 
-      </mat-accordion>
-      </mat-tab>
-  <mat-tab label="Settings">
-    <span>Settings</span>
-  </mat-tab>
+              <mat-form-field>
+                <input matInput type="number" min="1" placeholder="Age">
+              </mat-form-field>
+
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()">End</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+
+          </mat-accordion>
+        </mat-tab>
+        <mat-tab label="Settings">
+          <span>Settings</span>
+        </mat-tab>
       </mat-tab-group>
     </mat-sidenav>
+    
+    <router-outlet></router-outlet>
+
     <div class="content" fxLayout="column" fxLayout.sm="column" fxLayoutGap="16px">
       <mat-card fxFlex>
         <h2>hello</h2>
@@ -127,40 +130,40 @@
       </mat-card>
     </div>
     <div class="content" fxLayout="row" fxLayout.sm="column" fxLayoutGap="16px">
-        <h1>Request Form</h1>
-      </div>
-      <div class="content" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="16px">
-        <mat-card fxFlex fxLayoutGap="14px">
-          <form [formGroup]="requestForm" (ngSubmit)="submit()">
-            <div class="container">
-              <mat-form-field>
-                <input matInput placeholder="Enter your name" formControlName="name" required>
-              </mat-form-field>
-              <mat-form-field>
-                <input matInput placeholder="Enter your email" formControlName="email" required>
-                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-              </mat-form-field>
-              <mat-form-field>
-                <mat-select placeholder="Select your size" formControlName="size">
-                  <mat-option value="small">Smaill</mat-option>
-                  <mat-option value="medium">Medium</mat-option>
-                  <mat-option value="large">Large</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-          </form>
-        </mat-card>
-        <mat-card fxFlex="10" fxLayout="column" style="padding: 24px 12px">
-          <mat-slide-toggle>Is Admin?</mat-slide-toggle>
-          <mat-slide-toggle>Is Cool?</mat-slide-toggle>
-        </mat-card>
-      </div>
-      <div class="content" fxLayout="row" fxLayout.sm="column" fxLayoutGap="16px">
-        <mat-card fxFlex align="end">
-          <button type="submit" mat-raised-button color="primary">Submit</button>
-          <button type="button" mat-raised-button color="warn" (click)="reset()">Reset</button>
-        </mat-card>
-      </div>
+      <h1>Request Form</h1>
+    </div>
+    <div class="content" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="16px">
+      <mat-card fxFlex fxLayoutGap="14px">
+        <form [formGroup]="requestForm" (ngSubmit)="submit()">
+          <div class="container">
+            <mat-form-field>
+              <input matInput placeholder="Enter your name" formControlName="name" required>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Enter your email" formControlName="email" required>
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Select your size" formControlName="size">
+                <mat-option value="small">Smaill</mat-option>
+                <mat-option value="medium">Medium</mat-option>
+                <mat-option value="large">Large</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </form>
+      </mat-card>
+      <mat-card fxFlex="10" fxLayout="column" style="padding: 24px 12px">
+        <mat-slide-toggle>Is Admin?</mat-slide-toggle>
+        <mat-slide-toggle>Is Cool?</mat-slide-toggle>
+      </mat-card>
+    </div>
+    <div class="content" fxLayout="row" fxLayout.sm="column" fxLayoutGap="16px">
+      <mat-card fxFlex align="end">
+        <button type="submit" mat-raised-button color="primary">Submit</button>
+        <button type="button" mat-raised-button color="warn" (click)="reset()">Reset</button>
+      </mat-card>
+    </div>
   </mat-sidenav-container>
   <footer></footer>
 </div>

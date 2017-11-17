@@ -1,0 +1,41 @@
+<div class="content" fxLayout="column" fxLayout.sm="column" fxLayoutGap="16px">
+  <mat-card fxFlex>
+    <form #vehicleForm="ngForm">
+      <div class="container">
+        <mat-form-field>
+          <mat-select placeholder="Select your make" (change)="onMakeChange()" [(ngModel)]="vehicle.make" name="make">
+            <mat-option value=""></mat-option>
+            <mat-option *ngFor="let m of makes" [value]="m.id">{{ m.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Select your model">
+            <mat-option value=""></mat-option>
+            <mat-option *ngFor="let m of models" [value]="m.id">{{ m.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <p>Is this vehicle registered?</p>
+        <mat-radio-group>
+          <mat-radio-button value="true">Yes</mat-radio-button>
+          <mat-radio-button value="false">No</mat-radio-button>
+        </mat-radio-group>
+        <h2>Features</h2>
+        <mat-checkbox *ngFor="let f of features">{{ f.name }}</mat-checkbox>
+        <h2>Contact</h2>
+        <mat-form-field>
+          <input matInput placeholder="Enter your name" >
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Enter your phone" >
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Enter your email" >
+        </mat-form-field>
+      </div>
+    </form>
+    <div align="end">
+      <button type="submit" mat-raised-button color="primary">Submit</button>
+      <button type="button" mat-raised-button color="warn">Reset</button>
+    </div>
+  </mat-card>
+</div>

@@ -22,6 +22,17 @@ namespace vega.api
         {
             services.AddAutoMapper();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("ManaAPI",
+                      builder =>
+                      {
+                          builder.WithOrigins("http://localhost:4200")
+                                 .AllowAnyHeader()
+                                 .AllowAnyMethod();
+                      });
+            });
+
             services.AddDbContext<VegaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddMvc();
         }
@@ -29,6 +40,7 @@ namespace vega.api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseCors("ManaAPI");
             app.UseMvc();
         }
     }

@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'app';
   visible = true;
   navList = [
-    { name: 'Home', icon: 'home', urls: '/' },
+    { name: 'New Vehicle', icon: 'directions_car', urls: '/vehicles/new' },
     { name: 'Claim', icon: 'home', urls: '/' },
     { name: 'Product', icon: 'date_range', urls: '/' },
     { name: 'Admin', icon: 'account_circle', urls: '/' }
@@ -18,30 +18,30 @@ export class AppComponent {
   step = 0;
   public requestForm: FormGroup;
 
-    constructor(fb: FormBuilder) {
-      this.requestForm = fb.group(
-        {
-          name: [null],
-          email: [null, [Validators.required, Validators.email]],
-          size: null
-        }
-      );
-    }
-    get email() {
-      return this.requestForm.get('email') as FormControl;
-    }
+  constructor(fb: FormBuilder) {
+    this.requestForm = fb.group(
+      {
+        name: [null],
+        email: [null, [Validators.required, Validators.email]],
+        size: null
+      }
+    );
+  }
+  get email() {
+    return this.requestForm.get('email') as FormControl;
+  }
 
-    getErrorMessage() {
-      return this.email.hasError('required') ? 'You must enter a value' : this.email.hasError('email') ? 'Not a valid email' : '';
-    }
+  getErrorMessage() {
+    return this.email.hasError('required') ? 'You must enter a value' : this.email.hasError('email') ? 'Not a valid email' : '';
+  }
 
-    submit() {
-      console.log(this.requestForm.value);
-    }
+  submit() {
+    console.log(this.requestForm.value);
+  }
 
-    reset() {
-      this.requestForm.reset();
-    }
+  reset() {
+    this.requestForm.reset();
+  }
   setStep(index: number) {
     this.step = index;
   }
