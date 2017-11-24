@@ -8,6 +8,10 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <UserSecretsId>aspnet-vega.api-5CFB6BE0-7280-4631-B8B5-DB2852425975</UserSecretsId>
   </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\" />

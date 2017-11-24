@@ -12606,6 +12606,9 @@
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
       "projectUniqueName": "D:\\10_Dev\\Dev\\vega\\vega.api\\vega.api\\vega.api.csproj",
       "projectName": "vega.api",
@@ -12641,34 +12644,34 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "Microsoft.NETCore.App": {
+          "Microsoft.EntityFrameworkCore.Tools": {
             "target": "Package",
-            "version": "2.0.0-preview3-25518-01",
-            "autoReferenced": true
-          },
-          "AutoMapper": {
-            "target": "Package",
-            "version": "6.2.0"
+            "version": "2.0.1"
           },
           "AutoMapper.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
             "version": "3.1.0"
           },
-          "Microsoft.AspNetCore.All": {
-            "target": "Package",
-            "version": "2.0.3"
-          },
           "Microsoft.EntityFrameworkCore.Design": {
             "target": "Package",
             "version": "2.0.1"
+          },
+          "Microsoft.NETCore.App": {
+            "target": "Package",
+            "version": "2.0.0-preview3-25518-01",
+            "autoReferenced": true
           },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "2.0.1"
           },
-          "Microsoft.EntityFrameworkCore.Tools": {
+          "AutoMapper": {
             "target": "Package",
-            "version": "2.0.1"
+            "version": "6.2.0"
+          },
+          "Microsoft.AspNetCore.All": {
+            "target": "Package",
+            "version": "2.0.3"
           }
         },
         "imports": [
