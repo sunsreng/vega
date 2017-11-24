@@ -1,5 +1,6 @@
+import * as Raven from 'raven-js';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -22,10 +23,14 @@ import {
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import {ToastyModule} from 'ng2-toasty';
 
 import { AppComponent } from './app.component';
 import { VehicleService } from './services/vehicle.service';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
+import { AppErrorHandler } from './app.error-handler';
+
+Raven.config('https://5a0b52eacbdd4d86b19ef6909f8d9359@sentry.io/226172').install();
 
 @NgModule({
   declarations: [
@@ -33,6 +38,7 @@ import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
     VehicleFormComponent
   ],
   imports: [
+    ToastyModule.forRoot(),
     RouterModule.forRoot([
       { path: '', redirectTo: 'vehicles/new', pathMatch: 'full' },
       { path: 'vehicles/new', component: VehicleFormComponent },
@@ -62,6 +68,7 @@ import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
     HttpClientModule
   ],
   providers: [
+    { provide: ErrorHandler, useClass: AppErrorHandler },
     VehicleService
   ],
   bootstrap: [AppComponent]

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using vega.api.Controllers.Resources;
-using vega.api.Models;
+using vega.api.Core.Models;
 using vega.api.Persistence;
 
 namespace vega.api.Controllers

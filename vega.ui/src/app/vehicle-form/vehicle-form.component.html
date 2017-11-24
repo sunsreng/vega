@@ -1,41 +1,47 @@
 <div class="content" fxLayout="column" fxLayout.sm="column" fxLayoutGap="16px">
   <mat-card fxFlex>
-    <form #vehicleForm="ngForm">
+    <p>{{ vehicle | json }}</p>
+    <form #vehicleForm="ngForm" (ngSubmit)="submit()" novalidate>
       <div class="container">
         <mat-form-field>
-          <mat-select placeholder="Select your make" (change)="onMakeChange()" [(ngModel)]="vehicle.make" name="make">
+          <mat-select placeholder="Select your make" (change)="onMakeChange()" [(ngModel)]="vehicle.makeId" name="makeId" required #make="ngModel">
             <mat-option value=""></mat-option>
             <mat-option *ngFor="let m of makes" [value]="m.id">{{ m.name }}</mat-option>
           </mat-select>
+          <mat-error *ngIf="make.touched && make.invalid">Please choose a make</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <mat-select placeholder="Select your model">
+          <mat-select placeholder="Select your model" [(ngModel)]="vehicle.modelId" name="modelId" required #model="ngModel">
             <mat-option value=""></mat-option>
             <mat-option *ngFor="let m of models" [value]="m.id">{{ m.name }}</mat-option>
           </mat-select>
+          <mat-error *ngIf="model.touched && model.invalid">Please choose a make</mat-error>
         </mat-form-field>
         <p>Is this vehicle registered?</p>
-        <mat-radio-group>
+        <mat-radio-group [(ngModel)]="vehicle.isRegistered" name="vehicle.isRegistered">
           <mat-radio-button value="true">Yes</mat-radio-button>
           <mat-radio-button value="false">No</mat-radio-button>
         </mat-radio-group>
         <h2>Features</h2>
-        <mat-checkbox *ngFor="let f of features">{{ f.name }}</mat-checkbox>
+        <mat-checkbox *ngFor="let f of features" id="feature{{ f.id }}" (change)="onFeatureToggle(f.id, $event)" [checked]="vehicle.features.includes(f.id)">{{ f.name }}</mat-checkbox>
         <h2>Contact</h2>
         <mat-form-field>
-          <input matInput placeholder="Enter your name" >
+          <input matInput placeholder="Enter your name" [(ngModel)]="vehicle.contact.name" name="contactName" required #name="ngModel">
+          <mat-error *ngIf="name.touched && name.invalid">Please choose a make</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Enter your phone" >
+          <input matInput placeholder="Enter your phone" [(ngModel)]="vehicle.contact.phone" name="contactPhone" required #phone="ngModel">
+          <mat-error *ngIf="phone.touched && phone.invalid">Please choose a make</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Enter your email" >
+          <input matInput placeholder="Enter your email" [(ngModel)]="vehicle.contact.email" name="contactEmail" required #email="ngModel">
+          <mat-error *ngIf="email.touched && email.invalid">Please choose a make</mat-error>
         </mat-form-field>
       </div>
+      <div align="end">
+        <button mat-raised-button color="primary">Submit</button><!--  [disabled]="vehicleForm.invalid" -->
+        <button type="button" mat-raised-button color="warn">Reset</button>
+      </div>
     </form>
-    <div align="end">
-      <button type="submit" mat-raised-button color="primary">Submit</button>
-      <button type="button" mat-raised-button color="warn">Reset</button>
-    </div>
   </mat-card>
 </div>

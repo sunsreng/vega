@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using System.Collections.Generic;
 using System.Linq;
 using vega.api.Controllers.Resources;
-using vega.api.Models;
+using vega.api.Core.Models;
 
 namespace vega.api.Mapping
 {
