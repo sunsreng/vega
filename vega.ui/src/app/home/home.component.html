@@ -1,0 +1,43 @@
+<div class="content" fxLayout="column" fxLayout.sm="column" fxLayoutGap="16px">
+  <mat-card fxFlex>
+    <h2>hello</h2>
+  </mat-card>
+  <mat-card fxFlex>
+    <h2>hello</h2>
+  </mat-card>
+</div>
+<div class="content" fxLayout="row" fxLayout.sm="column" fxLayoutGap="16px">
+  <h1>Request Form</h1>
+</div>
+<div class="content" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="16px">
+  <mat-card fxFlex fxLayoutGap="14px">
+    <form [formGroup]="requestForm" (ngSubmit)="submit()">
+      <div class="container">
+        <mat-form-field>
+          <input matInput placeholder="Enter your name" formControlName="name" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Enter your email" formControlName="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Select your size" formControlName="size">
+            <mat-option value="small">Smaill</mat-option>
+            <mat-option value="medium">Medium</mat-option>
+            <mat-option value="large">Large</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-card>
+  <mat-card fxFlex="10" fxLayout="column" style="padding: 24px 12px">
+    <mat-slide-toggle>Is Admin?</mat-slide-toggle>
+    <mat-slide-toggle>Is Cool?</mat-slide-toggle>
+  </mat-card>
+</div>
+<div class="content" fxLayout="row" fxLayout.sm="column" fxLayoutGap="16px">
+  <mat-card fxFlex align="end">
+    <button type="submit" mat-raised-button color="primary">Submit</button>
+    <button type="button" mat-raised-button color="warn" (click)="reset()">Reset</button>
+  </mat-card>
+</div>

@@ -29,23 +29,33 @@ import { AppComponent } from './app.component';
 import { VehicleService } from './services/vehicle.service';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
 import { AppErrorHandler } from './app.error-handler';
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 
 Raven.config('https://5a0b52eacbdd4d86b19ef6909f8d9359@sentry.io/226172').install();
 
 @NgModule({
   declarations: [
     AppComponent,
-    VehicleFormComponent
+    VehicleFormComponent,
+    HomeComponent,
+    NotFoundComponent,
+    VehicleListComponent
   ],
   imports: [
     ToastyModule.forRoot(),
     RouterModule.forRoot([
-      { path: '', redirectTo: 'vehicles/new', pathMatch: 'full' },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'vehicles/new', component: VehicleFormComponent },
-      { path: 'home', component: AppComponent },
+      { path: 'vehicles/:id', component: VehicleFormComponent },
+      { path: 'vehicles', component: VehicleListComponent },
+      { path: 'not-found', component: NotFoundComponent },
+      { path: 'home', component: HomeComponent },
       { path: '**', redirectTo: 'home' }
     ]),
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
@@ -64,8 +74,7 @@ Raven.config('https://5a0b52eacbdd4d86b19ef6909f8d9359@sentry.io/226172').instal
     MatMenuModule,
     MatToolbarModule,
     MatSidenavModule,
-    FlexLayoutModule,
-    HttpClientModule
+    FlexLayoutModule
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },

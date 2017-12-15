@@ -1,0 +1,37 @@
+<!-- <div class="content" fxLayout="row" fxLayout.sm="column" fxLayoutGap="16px">
+  <h1>Vehicle List</h1>
+</div> -->
+
+<!-- <button type="submit" mat-raised-button color="primary">Submit</button>
+
+<mat-form-field class="example-full-width">
+            <input matInput placeholder="Favorite food" value="Sushi">
+          </mat-form-field>
+          <button type="button" mat-raised-button color="warn" (click)="reset()">Reset</button> -->
+<div class="content" fxLayout="row">
+  <mat-card fxFlex align="end">
+    <button type="submit" mat-raised-button color="primary">Submit</button>
+  <!-- </mat-card> -->
+  <span class="example-spacer"></span>
+  <!-- <mat-card fxFlex align="end"> -->
+    <span>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Favorite food" value="Sushi">
+          </mat-form-field>
+      <button type="submit" mat-raised-button color="primary">Submit</button>
+    </span>  
+  </mat-card> 
+</div>
+<div class="content" fxLayout="column" fxLayout.sm="column" fxLayoutGap="16px">
+  <mat-card fxFlex>
+    <table>
+      <thead>
+        <th>Id</th>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Contact Name</th>
+        <th></th>
+      </thead>
+    </table>
+  </mat-card>
+</div>

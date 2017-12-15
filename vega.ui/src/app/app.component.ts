@@ -10,6 +10,7 @@ export class AppComponent {
   title = 'app';
   visible = true;
   navList = [
+    { name: 'Vehicle List', icon: 'directions_car', urls: '/vehicles' },
     { name: 'New Vehicle', icon: 'directions_car', urls: '/vehicles/new' },
     { name: 'Claim', icon: 'home', urls: '/' },
     { name: 'Product', icon: 'date_range', urls: '/' },

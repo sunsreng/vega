@@ -1,0 +1,38 @@
+.content {
+    padding-left: 12px;
+    padding-top: 12px;
+    padding-right: 12px;
+  }
+  
+  
+  /* form */
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .container>* {
+    width: 100%;
+  }
+
+  /* .example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+  
+  .example-right-align {
+    text-align: right;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  } */
+  .example-spacer {
+    flex: 1 1 auto;
+  }
