@@ -10,6 +10,8 @@ namespace vega.api.Mapping
         public MappingProfile()
         {
             // Domain to API Resource
+            CreateMap<Make, MakeResource>();
+            CreateMap<Make, KeyValuePairResource>();
             CreateMap<Vehicle, SaveVehicleResource>()
                 .ForMember(vr => vr.Contact, opt => opt.MapFrom(v => new ContactResource { Name = v.ContactName, Email = v.ContactEmail, Phone = v.ContactPhone }))
                 .ForMember(vr => vr.Features, opt => opt.MapFrom(v => v.Features.Select(vf => vf.FeatureId)));

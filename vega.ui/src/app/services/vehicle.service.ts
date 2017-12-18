@@ -21,7 +21,7 @@ export class VehicleService {
     return this.http.post('http://localhost:5000/api/vehicles', vehicle);
   }
 
-  getVehicle(id): Observable<Vehicle> {
+  getVehicle(id: number): Observable<Vehicle> {
     return this.http.get<Vehicle>('http://localhost:5000/api/vehicles/' + id);
   }
 
