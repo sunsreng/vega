@@ -19,6 +19,7 @@ import {
     MatSlideToggleModule,
     MatTabsModule,
     MatToolbarModule,
+    MatGridListModule,
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,6 +33,8 @@ import { AppErrorHandler } from './app.error-handler';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
+import { PaginationComponent } from './shared/pagination/pagination.component';
+import { ViewVehicleComponent } from './view-vehicle/view-vehicle.component';
 
 Raven.config('https://5a0b52eacbdd4d86b19ef6909f8d9359@sentry.io/226172').install();
 
@@ -41,13 +44,16 @@ Raven.config('https://5a0b52eacbdd4d86b19ef6909f8d9359@sentry.io/226172').instal
     VehicleFormComponent,
     HomeComponent,
     NotFoundComponent,
-    VehicleListComponent
+    VehicleListComponent,
+    PaginationComponent,
+    ViewVehicleComponent
   ],
   imports: [
     ToastyModule.forRoot(),
     RouterModule.forRoot([
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'vehicles/new', component: VehicleFormComponent },
+      { path: 'vehicles/view-vehicle', component: ViewVehicleComponent },
       { path: 'vehicles/:id', component: VehicleFormComponent },
       { path: 'vehicles', component: VehicleListComponent },
       { path: 'not-found', component: NotFoundComponent },
@@ -74,7 +80,8 @@ Raven.config('https://5a0b52eacbdd4d86b19ef6909f8d9359@sentry.io/226172').instal
     MatMenuModule,
     MatToolbarModule,
     MatSidenavModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatGridListModule
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },

@@ -36,3 +36,20 @@
   .example-spacer {
     flex: 1 1 auto;
   }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    padding: 0.25rem;
+    text-align: left;
+    border: 1px solid #ccc;
+  }
+  tbody tr:nth-child(odd) {
+    background: #eee;
+  }
+
+  .icon {
+    font-size: 18px;
+  }

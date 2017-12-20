@@ -1,37 +1,49 @@
-<!-- <div class="content" fxLayout="row" fxLayout.sm="column" fxLayoutGap="16px">
-  <h1>Vehicle List</h1>
-</div> -->
+<mat-grid-list cols="2" rowHeight="40px">
+  <mat-grid-tile>
+    <a mat-raised-button routerLink="/vehicles/new">New</a>
+  </mat-grid-tile>
+  <mat-grid-tile>
+      <mat-form-field>
+        <mat-select placeholder="Select make" [(ngModel)]="query.makeId" (change)="onFilterChange()">
+          <mat-option value=""></mat-option>
+          <mat-option *ngFor="let m of makes" [value]="m.id">
+            {{ m.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="warn" type="button" (click)="resetFilter()">Reset</button>
+  </mat-grid-tile>
+</mat-grid-list>
 
-<!-- <button type="submit" mat-raised-button color="primary">Submit</button>
-
-<mat-form-field class="example-full-width">
-            <input matInput placeholder="Favorite food" value="Sushi">
-          </mat-form-field>
-          <button type="button" mat-raised-button color="warn" (click)="reset()">Reset</button> -->
-<div class="content" fxLayout="row">
-  <mat-card fxFlex align="end">
-    <button type="submit" mat-raised-button color="primary">Submit</button>
-  <!-- </mat-card> -->
-  <span class="example-spacer"></span>
-  <!-- <mat-card fxFlex align="end"> -->
-    <span>
-        <mat-form-field class="example-full-width">
-            <input matInput placeholder="Favorite food" value="Sushi">
-          </mat-form-field>
-      <button type="submit" mat-raised-button color="primary">Submit</button>
-    </span>  
-  </mat-card> 
-</div>
 <div class="content" fxLayout="column" fxLayout.sm="column" fxLayoutGap="16px">
   <mat-card fxFlex>
     <table>
       <thead>
-        <th>Id</th>
-        <th>Make</th>
-        <th>Model</th>
-        <th>Contact Name</th>
-        <th></th>
+        <th *ngFor="let c of columns">
+          <div *ngIf="c.isSortable" (click)="sortBy(c.key)">
+            {{ c.title }}
+            <mat-icon *ngIf="query.sortBy === c.key" class="icon">
+              <span *ngIf="query.isSortAscending">arrow_drop_up</span>
+              <span *ngIf="!query.isSortAscending">arrow_drop_down</span>
+            </mat-icon>
+          </div>
+          <div *ngIf="!c.isSortable">
+            {{ c.title }}
+          </div>
+        </th>
       </thead>
+      <tbody>
+          <tr *ngFor="let v of queryResult.items">
+            <td>{{ v.id }}</td>
+            <td>{{ v.make.name }}</td>
+            <td>{{ v.model.name }}</td>
+            <td>{{ v.contact.name }}</td>
+            <td>
+              <a [routerLink]="['/vehicles/', v.id]">View</a>
+            </td>
+          </tr>
+        </tbody>
     </table>
+    <app-pagination [total-items]="queryResult.totalItems" [page-size]="query.pageSize" (page-changed)="onPageChange($event)"></app-pagination>
   </mat-card>
 </div>

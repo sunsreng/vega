@@ -1,39 +1,54 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
 import { SaveVehicle } from '../models/savevehicle';
 import { Vehicle } from '../models/vehicle';
-import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class VehicleService {
+  private readonly apiEndpoint = 'http://localhost:5000/api/';
 
   constructor(private http: HttpClient) { }
 
   getMakes() {
-    return this.http.get('http://localhost:5000/api/makes');
+    return this.http.get(this.apiEndpoint + 'makes');
   }
 
   getFeatures() {
-    return this.http.get('http://localhost:5000/api/features');
+    return this.http.get(this.apiEndpoint + 'features');
   }
 
   create(vehicle) {
-    return this.http.post('http://localhost:5000/api/vehicles', vehicle);
+    return this.http.post(this.apiEndpoint + 'vehicles', vehicle);
   }
 
   getVehicle(id: number): Observable<Vehicle> {
-    return this.http.get<Vehicle>('http://localhost:5000/api/vehicles/' + id);
+    return this.http.get<Vehicle>(this.apiEndpoint + 'vehicles/' + id);
   }
 
-  getVehicles(): Observable<Vehicle> {
-    return this.http.get<Vehicle>('http://localhost:5000/api/vehicles');
+  getVehicles(filter): Observable<Vehicle> {
+    return this.http.get<Vehicle>(this.apiEndpoint + 'vehicles?' + this.toQueryString(filter));
+  }
+
+  toQueryString(obj) {
+    const parts = [];
+    // tslint:disable-next-line:forin
+    for (const property in obj) {
+      const value = obj[property];
+      if (value !== null && value !== undefined) {
+        parts.push(encodeURIComponent(property) + '=' + encodeURIComponent(value));
+      }
+    }
+
+    return parts.join('&');
   }
 
   update(vehicle: SaveVehicle) {
-    return this.http.put('http://localhost:5000/api/vehicles/' + vehicle.id, vehicle);
+    return this.http.put(this.apiEndpoint + 'vehicles/' + vehicle.id, vehicle);
   }
 
   delete(id) {
-    return this.http.delete('http://localhost:5000/api/vehicles/' + id);
+    return this.http.delete(this.apiEndpoint + 'vehicles/' + id);
   }
 }
