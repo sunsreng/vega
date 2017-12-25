@@ -27,8 +27,8 @@ export class VehicleService {
     return this.http.get<Vehicle>(this.apiEndpoint + 'vehicles/' + id);
   }
 
-  getVehicles(filter): Observable<Vehicle> {
-    return this.http.get<Vehicle>(this.apiEndpoint + 'vehicles?' + this.toQueryString(filter));
+  getVehicles(filter) {
+    return this.http.get(this.apiEndpoint + 'vehicles?' + this.toQueryString(filter));
   }
 
   toQueryString(obj) {

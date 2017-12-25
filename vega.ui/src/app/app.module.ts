@@ -1,5 +1,6 @@
 import * as Raven from 'raven-js';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserXhr } from '@angular/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -35,6 +36,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { PaginationComponent } from './shared/pagination/pagination.component';
 import { ViewVehicleComponent } from './view-vehicle/view-vehicle.component';
+import { PhotoService } from './services/photo.service';
+import { BrowserXhrWithProgress, ProgressService } from './services/progress.service';
 
 Raven.config('https://5a0b52eacbdd4d86b19ef6909f8d9359@sentry.io/226172').install();
 
@@ -53,8 +56,8 @@ Raven.config('https://5a0b52eacbdd4d86b19ef6909f8d9359@sentry.io/226172').instal
     RouterModule.forRoot([
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'vehicles/new', component: VehicleFormComponent },
-      { path: 'vehicles/view-vehicle', component: ViewVehicleComponent },
-      { path: 'vehicles/:id', component: VehicleFormComponent },
+      { path: 'vehicles/edit/:id', component: VehicleFormComponent },
+      { path: 'vehicles/:id', component: ViewVehicleComponent },
       { path: 'vehicles', component: VehicleListComponent },
       { path: 'not-found', component: NotFoundComponent },
       { path: 'home', component: HomeComponent },
@@ -85,7 +88,10 @@ Raven.config('https://5a0b52eacbdd4d86b19ef6909f8d9359@sentry.io/226172').instal
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },
-    VehicleService
+    { provide: BrowserXhr, useClass: BrowserXhrWithProgress },
+    VehicleService,
+    PhotoService,
+    ProgressService
   ],
   bootstrap: [AppComponent]
 })

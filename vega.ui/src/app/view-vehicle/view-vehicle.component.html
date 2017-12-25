@@ -1,12 +1,60 @@
 <div class="content" fxLayout="column" fxLayout.sm="column" fxLayoutGap="16px">
-    <mat-card fxFlex>
-        <mat-tab-group>
-            <mat-tab label="Users">
-                <span>Users</span>
-            </mat-tab>
-            <mat-tab label="Settings">
-              <span>Settings</span>
-            </mat-tab>
-          </mat-tab-group>
-    </mat-card>
-  </div>
+  <mat-card fxFlex>
+    <mat-tab-group>
+      <mat-tab label="Users" *ngIf="vehicle">
+        <mat-list>
+          <h3 mat-subheader>Basics</h3>
+          <mat-list-item>
+            <mat-icon mat-list-icon>folder</mat-icon>
+            <h4 mat-line>Make: {{ vehicle.make.name }}</h4>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>folder</mat-icon>
+            <h4 mat-line>Model: {{ vehicle.model.name }}</h4>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>folder</mat-icon>
+            <h4 mat-line>Registered: {{ vehicle.isRegistered ? 'Yes' : 'No' }}</h4>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <h3 mat-subheader>Features</h3>
+          <mat-list-item *ngFor="let f of vehicle.features">
+            <mat-icon mat-list-icon>note</mat-icon>
+            <h4 mat-line>{{ f.name }}</h4>
+          </mat-list-item>
+          <h3 mat-subheader>Contact</h3>
+          <mat-list-item>
+            <mat-icon mat-list-icon>note</mat-icon>
+            <h4 mat-line>Contact Name: {{ vehicle.contact.name }}</h4>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>note</mat-icon>
+            <h4 mat-line>Contact Phone: {{ vehicle.contact.phone }}</h4>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>note</mat-icon>
+            <h4 mat-line>Contact Email: {{ vehicle.contact.email }}</h4>
+          </mat-list-item>
+        </mat-list>
+        <div align="end">
+          <a mat-raised-button color="primary" [routerLink]="['/vehicles/edit/', vehicle.id]">Edit</a>
+          <button type="button" mat-raised-button color="warn" (click)="delete()">Delete</button>
+          <a mat-raised-button color="warn" [routerLink]="['/vehicles']">View All Vehicle</a>
+        </div>
+      </mat-tab>
+      <mat-tab label="Photos">
+        <mat-card fxFlex>
+          <input type="file" (change)="uploadPhoto()" #fileInput>
+
+          <div class="progress"  *ngIf="progress && progress.percentage < 100">
+            <div class="progress-bar" [style.width]="progress.percentage + '%'">
+              <span class="sr-only">{{ progress.percentage }}% Complete</span>
+            </div>
+          </div>
+
+          <img *ngFor="let photo of photos" src="http://localhost:5000/uploads/{{ photo.fileName }}" class="img-thumbnail">
+        </mat-card>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+</div>

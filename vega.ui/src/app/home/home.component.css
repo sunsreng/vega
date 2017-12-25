@@ -7,11 +7,11 @@
 
 /* form */
 
-.container {
+.f-container {
   display: flex;
   flex-direction: column;
 }
 
-.container>* {
+.f-container>* {
   width: 100%;
 }

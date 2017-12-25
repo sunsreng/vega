@@ -2,7 +2,7 @@
   <mat-card fxFlex>
     <p>{{ vehicle | json }}</p>
     <form #vehicleForm="ngForm" (ngSubmit)="submit()" novalidate>
-      <div class="container">
+      <div class="f-container">
         <mat-form-field>
           <mat-select placeholder="Select your make" (change)="onMakeChange()" [(ngModel)]="vehicle.makeId" name="makeId" required #make="ngModel">
             <mat-option value=""></mat-option>
@@ -40,7 +40,6 @@
       </div>
       <div align="end">
         <button mat-raised-button color="primary" [disabled]="vehicleForm.invalid">Submit</button>
-        <button *ngIf="vehicle.id" type="button" mat-raised-button color="warn" (click)="delete()">Delete</button>
         <button *ngIf="!vehicle.id" type="button" mat-raised-button color="warn">Reset</button>
       </div>
     </form>
