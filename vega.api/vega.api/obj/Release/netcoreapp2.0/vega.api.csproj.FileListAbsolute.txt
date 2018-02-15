@@ -1,0 +1,12 @@
+D:\vega\vega.api\vega.api\bin\Release\netcoreapp2.0\vega.api.deps.json
+D:\vega\vega.api\vega.api\bin\Release\netcoreapp2.0\vega.api.runtimeconfig.json
+D:\vega\vega.api\vega.api\bin\Release\netcoreapp2.0\vega.api.runtimeconfig.dev.json
+D:\vega\vega.api\vega.api\bin\Release\netcoreapp2.0\vega.api.dll
+D:\vega\vega.api\vega.api\bin\Release\netcoreapp2.0\vega.api.pdb
+D:\vega\vega.api\vega.api\obj\Release\netcoreapp2.0\vega.api.csprojResolveAssemblyReference.cache
+D:\vega\vega.api\vega.api\obj\Release\netcoreapp2.0\vega.api.csproj.CoreCompileInputs.cache
+D:\vega\vega.api\vega.api\obj\Release\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+D:\vega\vega.api\vega.api\obj\Release\netcoreapp2.0\vega.api.AssemblyInfoInputs.cache
+D:\vega\vega.api\vega.api\obj\Release\netcoreapp2.0\vega.api.AssemblyInfo.cs
+D:\vega\vega.api\vega.api\obj\Release\netcoreapp2.0\vega.api.dll
+D:\vega\vega.api\vega.api\obj\Release\netcoreapp2.0\vega.api.pdb

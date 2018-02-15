@@ -13,12 +13,10 @@
 
     <span fxFlex></span>
 
-    <ng-template #anonymousUser>
-      <a mat-button routerLink="/login" [matMenuTriggerFor]="themeMenu">
-        <mat-icon class="mat-24" aria-label="Example icon-button with a heart icon">lock</mat-icon> Login
-      </a>
-    </ng-template>
-    <button *ngIf="appUser; else anonymousUser" mat-button [matMenuTriggerFor]="themeMenu">
+    <a mat-button routerLink="/login" [matMenuTriggerFor]="themeMenu">
+      <mat-icon class="mat-24" aria-label="Example icon-button with a heart icon">lock</mat-icon> Login
+    </a>
+    <button mat-button [matMenuTriggerFor]="themeMenu">
       <mat-icon>account_circle</mat-icon> SUN SRENG
     </button>
   </mat-toolbar>
@@ -28,17 +26,17 @@
       <mat-icon>shopping_basket</mat-icon>
       <span>My Orders</span>
     </a>
-    <ng-container *ngIf="isAdmin">
-      <a mat-menu-item routerLink="/admin/orders">
-        <mat-icon>format_list_bulleted</mat-icon>
-        <span>Manage Orders</span>
-      </a>
-      <a mat-menu-item routerLink="/admin/products">
-        <mat-icon>format_list_bulleted</mat-icon>
-        <span>Manage Product</span>
-      </a>
-    </ng-container>
-    <a mat-menu-item (click)="logout()">
+
+    <a mat-menu-item routerLink="/admin/orders">
+      <mat-icon>format_list_bulleted</mat-icon>
+      <span>Manage Orders</span>
+    </a>
+    <a mat-menu-item routerLink="/admin/products">
+      <mat-icon>format_list_bulleted</mat-icon>
+      <span>Manage Product</span>
+    </a>
+
+    <a mat-menu-item>
       <mat-icon>input</mat-icon>
       <span>Log Out</span>
     </a>
@@ -121,7 +119,7 @@
     </mat-sidenav>
 
     <router-outlet></router-outlet>
-    
+
   </mat-sidenav-container>
   <footer></footer>
 </div>

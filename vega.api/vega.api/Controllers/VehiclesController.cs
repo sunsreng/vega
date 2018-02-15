@@ -25,7 +25,7 @@ namespace vega.api.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> CreateVehicleAsync([FromBody] SaveVehicleResource vehicleResource)
         {
             //return BadRequest("bad request");
@@ -47,7 +47,7 @@ namespace vega.api.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> UpdateVehicleAsync(int id, [FromBody] SaveVehicleResource vehicleResource)
         {
             if (!ModelState.IsValid)
@@ -69,7 +69,7 @@ namespace vega.api.Controllers
             return Ok(result);
         }
         [HttpDelete("{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> DeleteVehicleAsync(int id)
         {
             var vehicle = await repository.GetVehicleAsync(id, includeRelated: false);

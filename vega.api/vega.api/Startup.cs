@@ -46,13 +46,15 @@ namespace vega.api
                 options.AddPolicy("ManaAPI",
                       builder =>
                       {
-                          builder.WithOrigins("http://localhost:4200")
+                          builder.WithOrigins("http://192.168.1.112")
                                  .AllowAnyHeader()
                                  .AllowAnyMethod();
                       });
             });
 
-            services.AddDbContext<VegaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddDbContext<VegaDbContext>(options =>
+                options.UseLoggerFactory(VegaDbContext.ConsoleLoggerFactory).EnableSensitiveDataLogging(true).UseSqlServer(Configuration.GetConnectionString("Default"))
+                );
             services.AddMvc();
         }
 

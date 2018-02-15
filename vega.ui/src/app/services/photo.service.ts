@@ -8,10 +8,10 @@ export class PhotoService {
   upload(vehicleId, photo) {
     const formData = new FormData();
     formData.append('file', photo);
-    return this.http.post(`http://localhost:5000/api/vehicles/${vehicleId}/photos`, formData);
+    return this.http.post(`http://192.168.1.112/vega/api/vehicles/${vehicleId}/photos`, formData);
   }
 
   getPhotos(vehicleId) {
-    return this.http.get(`http://localhost:5000/api/vehicles/${vehicleId}/photos`);
+    return this.http.get(`http://192.168.1.112/vega/api/vehicles/${vehicleId}/photos`);
   }
 }

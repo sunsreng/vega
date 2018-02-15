@@ -7,7 +7,7 @@ import { Vehicle } from '../models/vehicle';
 
 @Injectable()
 export class VehicleService {
-  private readonly apiEndpoint = 'http://localhost:5000/api/';
+  private readonly apiEndpoint = 'http://192.168.1.112/vega/api/';
 
   constructor(private http: HttpClient) { }
 

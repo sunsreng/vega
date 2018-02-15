@@ -1,0 +1,5 @@
+D:\vega\vega.api\vega.api
+--output-path=obj\Any CPU\Release\netcoreapp2.0\
+--application-name=vega.api
+--content-root=D:\vega\vega.api\vega.api
+--file=
