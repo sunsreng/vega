@@ -70,6 +70,24 @@ namespace vega.api
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            //Registered before static files to always set header https://damienbod.com/2018/02/08/adding-http-headers-to-improve-security-in-an-asp-net-mvc-core-application/
+            app.UseHsts(hsts => hsts.MaxAge(365).IncludeSubdomains());
+            app.UseXContentTypeOptions();
+            app.UseReferrerPolicy(opts => opts.NoReferrer());
+            app.UseXXssProtection(options => options.EnabledWithBlockMode());
+            app.UseXfo(options => options.Deny());
+            
+            app.UseCsp(opts => opts
+                .BlockAllMixedContent()
+                .StyleSources(s => s.Self())
+                .StyleSources(s => s.UnsafeInline())
+                .FontSources(s => s.Self())
+                .FormActions(s => s.Self())
+                .FrameAncestors(s => s.Self())
+                .ImageSources(s => s.Self())
+                .ScriptSources(s => s.Self())
+            );
+            
             app.UseStaticFiles();
             app.UseCors("ManaAPI");
 
